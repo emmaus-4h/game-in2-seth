@@ -46,9 +46,9 @@ var score = 0; // aantal behaalde punten
  * Tekent het speelveld
  */
 var tekenVeld = function () {
-  fill("purple");
-  rect(20, 20, width - 2 * 20, height - 2 * 20);
-};
+  fill("grey");
+ rect(0, 0, width - 2, height - 2 * 20) ;
+}
 
 
 /**
@@ -79,8 +79,22 @@ var tekenKogel = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
+  //hoofd
   fill("white");
-  ellipse(x, y, 50, 50);
+  ellipse(x, y+400, 50, 50);
+  
+  //lijf
+  fill("white");
+  ellipse(x, y+500, 50, 150);
+  
+
+  // middenstip
+  fill("black");
+  ellipse(x, y+400, 5, 5);
+   
+   // zwaard
+   fill("blue")
+rect(x+25, y+480,130,15);
 };
 
 
@@ -150,7 +164,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+  background('red');
 }
 
 
