@@ -1,9 +1,9 @@
 Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 
-## Mijn spel: *naam van het spel*
+## Mijn spel: *slangenbal*
 Gemaakt door:
-- *naam van leerling 1*
-- *naam van leerling 2*
+- *Seth
+
 
 ## Mijn planning
 
