@@ -123,7 +123,13 @@ var beweegKogel = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
+if (keyIsDown(65)) { spelerX = spelerX - 5;
+}
+if (keyIsDown(68)) { spelerX = spelerX+ 5;
+}
+if (spelerX<50) {spelerX=50;}
 
+if (spelerX>1230) {spelerX=1230;}
 };
 
 
