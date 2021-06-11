@@ -23,13 +23,16 @@ const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
 var spelerX = 200; // x-positie van speler
-var spelerY = 100; // y-positie van speler
+var spelerY = 98; // y-positie van speler
 
 var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
 
 var vijandX = 0;   // x-positie van vijand
-var vijandY = 0;   // y-positie van vijand
+var vijandY = 99;   // y-positie van vijand
+
+var dijandX = 1000;   // x-positie van vijand
+var dijandY = 99;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
@@ -46,7 +49,7 @@ var score = 0; // aantal behaalde punten
  * Tekent het speelveld
  */
 var tekenVeld = function () {
-  fill("darkblue");
+  fill("cornflowerblue");
  rect(0, 0, width - 2, height - 2 * 20) ;
 }
 
@@ -57,7 +60,20 @@ var tekenVeld = function () {
  * @param {number} y y-coördinaat
  */
 var tekenVijand = function(x, y) {
-    
+ //hoofd
+  fill("darkred");
+  ellipse(x, y+400, 50, 50);
+  
+  //lijf
+  fill("darkred");
+  ellipse(x, y+500, 50, 150);
+  
+
+  // middenstip
+  fill("darkred");
+  ellipse(x, y+400, 5, 5); 
+
+
 
 };
 
@@ -80,11 +96,11 @@ var tekenKogel = function(x, y) {
  */
 var tekenSpeler = function(x, y) {
   //hoofd
-  fill("white");
+  fill("bisque");
   ellipse(x, y+400, 50, 50);
   
   //lijf
-  fill("white");
+  fill("black");
   ellipse(x, y+500, 50, 150);
   
 
@@ -94,7 +110,7 @@ var tekenSpeler = function(x, y) {
    
    // zwaard
    fill("grey")
-rect(x+25, y+480,110,15);
+rect(x+25, y+480,90,15);
 
 
 
@@ -105,10 +121,11 @@ rect(x+25, y+480,110,15);
 /**
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
-var beweegVijand = function() {
-    
+var beweegVijand = function(x,y) { 
+  vijandX = vijandX + random(10) + random(-1)
 };
-
+var beweegdijand = function(x,y) { 
+  dijandX = dijandX + random(-10) + random(+10)};
 
 /**
  * Updatet globale variabelen met positie van kogel of bal
@@ -123,9 +140,10 @@ var beweegKogel = function() {
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-if (keyIsDown(65)) { spelerX = spelerX - 5;
+if (keyIsDown(65)) { spelerX = spelerX - 7 ;
+
 }
-if (keyIsDown(68)) { spelerX = spelerX+ 5;
+if (keyIsDown(68)) { spelerX = spelerX+ 7;
 }
 if (spelerX<50) {spelerX=50;}
 
@@ -174,7 +192,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('red');
+  background('olivedrab');
 }
 
 
