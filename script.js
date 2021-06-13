@@ -28,14 +28,18 @@ var spelerY = 98; // y-positie van speler
 var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
 
-var vijandX = 0;   // x-positie van vijand
+var vijandX = 1220;   // x-positie van vijand
 var vijandY = 99;   // y-positie van vijand
 
-var dijandX = 1000;   // x-positie van vijand
-var dijandY = 99;   // y-positie van vijand
+
 
 var score = 0; // aantal behaalde punten
 
+var KEY_SPACE = 32;
+var KEY_LEFT = 37;
+var KEY_UP = 38;
+var KEY_RIGHT = 39;
+var KEY_DOWN = 40;
 
 
 
@@ -49,8 +53,10 @@ var score = 0; // aantal behaalde punten
  * Tekent het speelveld
  */
 var tekenVeld = function () {
-  fill("cornflowerblue");
+  fill("dimgray");
  rect(0, 0, width - 2, height - 2 * 20) ;
+
+ 
 }
 
 
@@ -60,19 +66,96 @@ var tekenVeld = function () {
  * @param {number} y y-coördinaat
  */
 var tekenVijand = function(x, y) {
- //hoofd
-  fill("darkred");
-  ellipse(x, y+400, 50, 50);
-  
-  //lijf
-  fill("darkred");
-  ellipse(x, y+500, 50, 150);
-  
+//wiel
+  fill("black");
+  ellipse(x, y+555, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+70, y+555, 30, 30);
+ //outa
+  fill("grey")
+rect(x, y+510,70,35);
 
-  // middenstip
-  fill("darkred");
-  ellipse(x, y+400, 5, 5); 
+//wiel
+  fill("black");
+  ellipse(x+100, y+355, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+170, y+355, 30, 30);
+ //outa
+  fill("grey")
+rect(x+100, y+310,70,35);
 
+//wiel
+  fill("black");
+  ellipse(x+300, y+555, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+370, y+555, 30, 30);
+ //outa
+  fill("grey")
+rect(x+300, y+510,70,35);
+
+
+//wiel
+  fill("black");
+  ellipse(x+800, y+255, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+870, y+255, 30, 30);
+ //outa
+  fill("grey")
+rect(x+800, y+210,70,35);
+
+//wiel
+  fill("black");
+  ellipse(x+800, y+155, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+870, y+155, 30, 30);
+ //outa
+  fill("grey")
+rect(x+800, y+110,70,35);
+
+//wiel
+  fill("black");
+  ellipse(x+600, y+455, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+670, y+455, 30, 30);
+ //outa
+  fill("grey")
+rect(x+600, y+410,70,35);
+
+//wiel
+  fill("black");
+  ellipse(x+700, y+55, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+770, y+55, 30, 30);
+ //outa
+  fill("grey")
+rect(x+700, y+10,70,35);
+
+//wiel
+  fill("black");
+  ellipse(x+200, y+455, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+270, y+455, 30, 30);
+ //outa
+  fill("grey")
+rect(x+200, y+410,70,35);
+
+//wiel
+  fill("black");
+  ellipse(x+100, y+155, 30, 30);
+  //wiel
+  fill("black");
+  ellipse(x+170, y+155, 30, 30);
+ //outa
+  fill("grey")
+rect(x+100, y+110,70,35);
 
 
 };
@@ -96,21 +179,17 @@ var tekenKogel = function(x, y) {
  */
 var tekenSpeler = function(x, y) {
   //hoofd
-  fill("bisque");
+  fill("lightsalmon");
   ellipse(x, y+400, 50, 50);
   
-  //lijf
-  fill("black");
-  ellipse(x, y+500, 50, 150);
+  
   
 
   // middenstip
-  fill("black");
+  fill("lightsalmon");
   ellipse(x, y+400, 5, 5);
    
-   // zwaard
-   fill("grey")
-rect(x+25, y+480,90,15);
+  
 
 
 
@@ -121,12 +200,14 @@ rect(x+25, y+480,90,15);
 /**
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
-var beweegVijand = function(x,y) { 
-  vijandX = vijandX + random(10) + random(-1)
-};
-var beweegdijand = function(x,y) { 
-  dijandX = dijandX + random(-10) + random(+10)};
+var beweegVijand = function(x,y) 
+{ 
+  vijandX = vijandX - random(70) - random(-1)
 
+if(vijandY>610){vijandY=150;}
+if (vijandX>1220){ vijandX=50;}
+if (vijandX<-900){vijandX=1220;}
+};
 /**
  * Updatet globale variabelen met positie van kogel of bal
  */
@@ -139,17 +220,26 @@ var beweegKogel = function() {
  * Kijkt wat de toetsen/muis etc zijn.
  * Updatet globale variabele spelerX en spelerY
  */
+
 var beweegSpeler = function() {
-if (keyIsDown(65)) { spelerX = spelerX - 7 ;
-
+if (keyIsDown(KEY_LEFT)) {
+  spelerX = spelerX - 3;
+  
+  
 }
-if (keyIsDown(68)) { spelerX = spelerX+ 7;
-}
-if (spelerX<50) {spelerX=50;}
 
-if (spelerX>1230) {spelerX=1230;}
+if (keyIsDown(KEY_RIGHT)) {
+  spelerX = spelerX + 3;
+}
+
+if (keyIsDown(KEY_UP)) {
+  spelerY = spelerY - 3;
+}
+
+if (keyIsDown(KEY_DOWN )) {
+  spelerY = spelerY + 3;
+}
 };
-
 
 /**
  * Zoekt uit of de vijand is geraakt
@@ -167,7 +257,7 @@ var checkVijandGeraakt = function() {
  * @returns {boolean} true als speler is geraakt
  */
 var checkSpelerGeraakt = function() {
-    
+
   return false;
 };
 
@@ -192,7 +282,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('olivedrab');
+  background('goldenrod');
 }
 
 
@@ -214,8 +304,7 @@ function draw() {
       }
       
       if (checkSpelerGeraakt()) {
-        // leven eraf of gezondheid verlagen
-        // eventueel: nieuwe speler maken
+        return true(restart)
       }
 
       tekenVeld();
@@ -224,7 +313,8 @@ function draw() {
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver()) {
-        spelStatus = GAMEOVER;
+       
+        return true; spelStatus=GAMEOVER;
       }
       break;
   }
