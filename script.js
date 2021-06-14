@@ -265,17 +265,15 @@ var checkSpelerGeraakt = function() {
  * Zoekt uit of het spel is afgelopen
  * @returns {boolean} true als het spel is afgelopen
  */
-var checkGameOver = function() {
-if ((spelerX < 21 || spelerY < 21 || spelerX > 1219 || spelerY > 659 )
-
-||(spelerY - vijandY < 25 && spelerY - vijandY > -25 && spelerX - vijandX < 25 && spelerX - vijandX > -25 ) 
-)
+var checkGameOver = function() 
 
 
 
 
 
-}
+
+
+
 
 
 
