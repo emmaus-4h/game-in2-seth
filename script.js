@@ -83,7 +83,7 @@ rect(x, y+510,70,35);
   fill("black");
   ellipse(x+170, y+355, 30, 30);
  //outa
-  fill("grey")
+  fill("red")
 rect(x+100, y+310,70,35);
 
 //wiel
@@ -93,7 +93,7 @@ rect(x+100, y+310,70,35);
   fill("black");
   ellipse(x+370, y+555, 30, 30);
  //outa
-  fill("grey")
+  fill("blue")
 rect(x+300, y+510,70,35);
 
 
@@ -104,7 +104,7 @@ rect(x+300, y+510,70,35);
   fill("black");
   ellipse(x+870, y+255, 30, 30);
  //outa
-  fill("grey")
+  fill("green")
 rect(x+800, y+210,70,35);
 
 //wiel
@@ -114,7 +114,7 @@ rect(x+800, y+210,70,35);
   fill("black");
   ellipse(x+870, y+155, 30, 30);
  //outa
-  fill("grey")
+  fill("black")
 rect(x+800, y+110,70,35);
 
 //wiel
@@ -124,7 +124,7 @@ rect(x+800, y+110,70,35);
   fill("black");
   ellipse(x+670, y+455, 30, 30);
  //outa
-  fill("grey")
+  fill("purple")
 rect(x+600, y+410,70,35);
 
 //wiel
@@ -134,7 +134,7 @@ rect(x+600, y+410,70,35);
   fill("black");
   ellipse(x+770, y+55, 30, 30);
  //outa
-  fill("grey")
+  fill("yellow")
 rect(x+700, y+10,70,35);
 
 //wiel
@@ -180,14 +180,12 @@ var tekenKogel = function(x, y) {
 var tekenSpeler = function(x, y) {
   //hoofd
   fill("lightsalmon");
-  ellipse(x, y+400, 50, 50);
+  ellipse(x, y+400, 25, 25);
   
   
   
 
-  // middenstip
-  fill("lightsalmon");
-  ellipse(x, y+400, 5, 5);
+  
    
   
 
@@ -202,7 +200,7 @@ var tekenSpeler = function(x, y) {
  */
 var beweegVijand = function(x,y) 
 { 
-  vijandX = vijandX - random(70) - random(-1)
+  vijandX = vijandX - random(60) - random(-1)
 
 if(vijandY>610){vijandY=150;}
 if (vijandX>1220){ vijandX=50;}
@@ -257,8 +255,9 @@ var checkVijandGeraakt = function() {
  * @returns {boolean} true als speler is geraakt
  */
 var checkSpelerGeraakt = function() {
-
-  return false;
+ 
+ return false;
+  
 };
 
 
@@ -267,7 +266,22 @@ var checkSpelerGeraakt = function() {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function() {
-    
+if ((spelerX < 21 || spelerY < 21 || spelerX > 1219 || spelerY > 659 )
+
+||(spelerY - vijandY < 25 && spelerY - vijandY > -25 && spelerX - vijandX < 25 && spelerX - vijandX > -25 ) 
+)
+
+
+
+
+
+}
+
+
+
+
+
+
   return false;
 };
 
@@ -304,13 +318,16 @@ function draw() {
       }
       
       if (checkSpelerGeraakt()) {
-        return true(restart)
+        
       }
 
       tekenVeld();
-      tekenVijand(vijandX, vijandY);
-      tekenKogel(kogelX, kogelY);
+     tekenVijand(vijandX, vijandY);
+
       tekenSpeler(spelerX, spelerY);
+
+
+
 
       if (checkGameOver()) {
        
